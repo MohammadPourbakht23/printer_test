@@ -1,6 +1,9 @@
 package com.example.printer_test;
 
+import static com.smartdevice.aidltestdemo.BaseActivity.mIzkcService;
+
 import android.content.ServiceConnection;
+import android.os.RemoteException;
 
 import androidx.annotation.NonNull;
 
@@ -13,7 +16,7 @@ import io.flutter.plugin.common.MethodChannel;
 public class MainActivity extends FlutterActivity {
     private static final String CHANNEL = "samples.flutter.dev/battery";
 
-    ZKCManager zkcManager;
+//    ZKCManager zkcManager;
     ServiceConnection mServiceConn;
 
     @Override
@@ -27,12 +30,46 @@ public class MainActivity extends FlutterActivity {
 
 //                            mServiceConn.onServiceConnected();
 
-                            zkcManager = ZKCManager.getInstance(this);
-                            zkcManager.bindService();
-                            zkcManager.getPrintManager().printText("Text test", 0 , 15);
+
 //                            zkcManager.getPrintManager().printQRCode("123");
 
                             if (call.method.equals("getBatteryLevel")) {
+
+                                System.out.println("printText func");
+                                try {
+                                    mIzkcService.printerInit();
+                                } catch (RemoteException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                try {
+                                    String status =mIzkcService.getPrinterStatus();
+                                    System.out.println("+++++++++++++++++status++++++++++++++++++++");
+                                    System.out.println(status);
+                                } catch (RemoteException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                                try {
+                                    boolean available = mIzkcService.checkPrinterAvailable();
+                                    System.out.println("+++++++++++++++++available++++++++++++++++++++");
+                                    System.out.println(available);
+                                } catch (RemoteException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                                try {
+                                    System.out.println("+++++++++++++++++call print++++++++++++++++++++");
+                                    mIzkcService.printTextWithFont("test text print",0,15);
+                                } catch (RemoteException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+//                                zkcManager = ZKCManager.getInstance(this);
+//                                zkcManager.bindService();
+
+//                                if(zkcManager!=null){
+//                                    zkcManager.getPrintManager().printText("Text test", 0 , 15);
+//                                }
 //                                int batteryLevel = getBatteryLevel();
                                 int batteryLevel = 10;
 //                                getBatteryLevel();

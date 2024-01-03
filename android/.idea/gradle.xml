@@ -7,9 +7,9 @@
         <compositeConfiguration>
           <compositeBuild compositeDefinitionSource="SCRIPT">
             <builds>
-              <build path="$PROJECT_DIR$/../../../flutter_windows_3.7.12-stable/flutter/packages/flutter_tools/gradle" name="gradle">
+              <build path="$PROJECT_DIR$/../../../../../flutter/packages/flutter_tools/gradle" name="gradle">
                 <projects>
-                  <project path="$PROJECT_DIR$/../../../flutter_windows_3.7.12-stable/flutter/packages/flutter_tools/gradle" />
+                  <project path="$PROJECT_DIR$/../../../../../flutter/packages/flutter_tools/gradle" />
                 </projects>
               </build>
             </builds>
@@ -18,13 +18,13 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:/Gradle/gradle-7.5.1" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../Gradle/gradle-7.5.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/zkclibaray" />
-            <option value="$PROJECT_DIR$/../../../flutter_windows_3.7.12-stable/flutter/packages/flutter_tools/gradle" />
+            <option value="$PROJECT_DIR$/../../../../../flutter/packages/flutter_tools/gradle" />
           </set>
         </option>
       </GradleProjectSettings>
